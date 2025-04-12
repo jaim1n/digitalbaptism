@@ -45,17 +45,12 @@
         }
 
         #marquee1 { top: 10%; animation: scroll-left 15s linear infinite; }
-        #marquee2 { top: 50%; animation: scroll-right 20s linear infinite; } /* Changed to scroll-right */
+        #marquee2 { top: 50%; animation: scroll-left 20s linear infinite; }
         #marquee3 { top: 90%; animation: scroll-left 25s linear infinite; }
 
         @keyframes scroll-left {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
-        }
-
-        @keyframes scroll-right {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
         }
 
         @media (max-width: 768px) {
