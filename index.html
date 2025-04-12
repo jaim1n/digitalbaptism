@@ -13,12 +13,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Stack content vertically */
         }
 
-        #image {
+        #image-link {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
+            z-index: 1;
+        }
+
+        #image-link img {
+            width: 100%; /* Ensure the image fills the link container */
+            height: auto; /* Maintain aspect ratio */
         }
 
         .marquee {
@@ -41,7 +48,7 @@
         }
 
         #marquee1 { top: 10%; animation: scroll-left 15s linear infinite; }
-        #marquee2 { top: 50%; animation: scroll-right 20s linear infinite; }
+        #marquee2 { top: 50%; animation: scroll-left 20s linear infinite; } <!-- Changed to scroll-left for consistency -->
         #marquee3 { top: 90%; animation: scroll-left 25s linear infinite; }
 
         @keyframes scroll-left {
@@ -49,12 +56,14 @@
             100% { transform: translateX(-100%); }
         }
 
-        @keyframes scroll-right {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
+        /* Removed scroll-right animation since all marquees now scroll left */
 
         @media (max-width: 768px) {
+            #image-link {
+                max-width: 60%; /* Reduce image size on mobile */
+                max-height: 60%; /* Reduce image height on mobile */
+            }
+
             .marquee {
                 font-size: 14px;
             }
@@ -63,16 +72,18 @@
                 margin: 0 20px;
                 padding: 8px;
             }
+        }
 
-            #image {
-                max-width: 80%;
-                max-height: 80%;
+        @media (max-width: 480px) {
+            #image-link {
+                max-width: 50%; /* Even smaller on very small screens */
+                max-height: 50%;
             }
         }
     </style>
 </head>
 <body>
-    <a href="2k25.html" target="_blank" id="image-link">
+    <a href="ascii-art.html" target="_blank" id="image-link">
         <img src="logo.png" alt="logo" loading="eager">
     </a>
 
