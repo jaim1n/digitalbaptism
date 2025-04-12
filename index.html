@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>DIGITAL BAPTISM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- Mobile viewport -->
     <style>
         body, html {
             margin: 0;
@@ -16,12 +16,9 @@
         }
 
         #image {
-            width: 100%; /* Full width to fit screen */
-            height: auto; /* Maintain aspect ratio */
-            max-width: 100%; /* Ensure it doesn’t exceed viewport width */
-            max-height: 100%; /* Ensure it doesn’t exceed viewport height */
-            object-fit: contain; /* Fit the image within the bounds without stretching or cropping */
-            z-index: 0; /* Lower z-index so marquees appear above */
+            max-width: 90%; /* Allow some breathing room on mobile */
+            max-height: 90%;
+            object-fit: contain; /* Ensures the image scales proportionally */
         }
 
         .marquee {
@@ -31,17 +28,16 @@
             width: 100%;
             color: white;
             font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            z-index: 1; /* Higher z-index to ensure marquees are clickable above the image */
+            font-size: 16px; /* Larger text for better readability on mobile */
+            line-height: 1.5; /* Improve text spacing */
         }
 
         .marquee a {
             color: white;
             text-decoration: none;
-            margin: 0 30px;
-            padding: 10px;
-            display: inline-block;
+            margin: 0 30px; /* Increase margin for larger touch targets */
+            padding: 10px; /* Add padding to make links easier to tap */
+            display: inline-block; /* Ensures padding and margin apply correctly */
         }
 
         #marquee1 { top: 10%; animation: scroll-left 15s linear infinite; }
@@ -52,31 +48,26 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-        
+
         @keyframes scroll-right {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
 
+        /* Media query for smaller screens */
         @media (max-width: 768px) {
             .marquee {
-                font-size: 14px;
+                font-size: 14px; /* Slightly smaller text on very small screens */
             }
 
             .marquee a {
-                margin: 0 20px;
+                margin: 0 20px; /* Reduce margin on smaller screens */
                 padding: 8px;
             }
-        }
 
-        @media (max-width: 480px) {
-            .marquee {
-                font-size: 12px; /* Further reduce for very small screens */
-            }
-
-            .marquee a {
-                margin: 0 15px;
-                padding: 6px;
+            #image {
+                max-width: 80%; /* Smaller image on mobile */
+                max-height: 80%;
             }
         }
     </style>
@@ -109,6 +100,7 @@
             event.preventDefault();
         });
 
+        // Prevent touchmove scrolling
         document.addEventListener('touchmove', function(event) {
             event.preventDefault();
         }, { passive: false });
