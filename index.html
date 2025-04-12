@@ -13,19 +13,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Stack content vertically */
         }
 
-        #image-link {
+        #image {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
             z-index: 1;
         }
 
-        #image-link img {
-            width: 100%; /* Ensure the image fills the link container */
-            height: auto; /* Maintain aspect ratio */
+        #image img {
+            width: 100%;
+            height: auto;
         }
 
         .marquee {
@@ -48,7 +47,7 @@
         }
 
         #marquee1 { top: 10%; animation: scroll-left 15s linear infinite; }
-        #marquee2 { top: 50%; animation: scroll-left 20s linear infinite; } <!-- Changed to scroll-left for consistency -->
+        #marquee2 { top: 50%; animation: scroll-left 20s linear infinite; } <!-- Ensured consistent left scrolling -->
         #marquee3 { top: 90%; animation: scroll-left 25s linear infinite; }
 
         @keyframes scroll-left {
@@ -56,12 +55,10 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Removed scroll-right animation since all marquees now scroll left */
-
         @media (max-width: 768px) {
-            #image-link {
-                max-width: 60%; /* Reduce image size on mobile */
-                max-height: 60%; /* Reduce image height on mobile */
+            #image {
+                max-width: 60%; /* Reduced for mobile */
+                max-height: 60%;
             }
 
             .marquee {
@@ -75,7 +72,7 @@
         }
 
         @media (max-width: 480px) {
-            #image-link {
+            #image {
                 max-width: 50%; /* Even smaller on very small screens */
                 max-height: 50%;
             }
@@ -83,9 +80,7 @@
     </style>
 </head>
 <body>
-    <a href="ascii-art.html" target="_blank" id="image-link">
-        <img src="logo.png" alt="logo" loading="eager">
-    </a>
+    <img id="image" src="logo.png" alt="logo" loading="eager">
 
     <div class="marquee" id="marquee1">
         <a href="https://instagram.com/baptism60006" target="_blank">INSTAGRAM</a>
