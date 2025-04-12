@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DIGITAL BAPTISM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .marquee {
+            position: absolute;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .marquee a {
+            color: white;
+            text-decoration: none;
+            margin: 0 30px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        #marquee1 { top: 10%; animation: scroll-left 15s linear infinite; }
+        #marquee2 { top: 50%; animation: scroll-right 20s linear infinite; }
+        #marquee3 { top: 90%; animation: scroll-left 25s linear infinite; }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes scroll-right {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @media (max-width: 768px) {
+            .marquee {
+                font-size: 14px;
+            }
+
+            .marquee a {
+                margin: 0 20px;
+                padding: 8px;
+            }
+
+            #image {
+                max-width: 80%;
+                max-height: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img id="image" src="logo.png" alt="logo" loading="eager">
+
+    <div class="marquee" id="marquee1">
+        <a href="https://instagram.com/baptism60006" target="_blank">instagram</a>
+    </div>
+
+    <div class="marquee" id="marquee2">
+        <a href="https://twitter.com/baptism60006" target="_blank">twitter</a>
+    </div>
+
+    <div class="marquee" id="marquee3">
+        <a href="https://soundcloud.com/digitalbaptism" target="_blank">soundcloud</a>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowUp' || event.key === 'ArrowDown' || event.key === 'PageUp' || event.key === 'PageDown' || event.key === 'Home' || event.key === 'End') {
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener('wheel', function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener('touchmove', function(event) {
+            event.preventDefault();
+        }, { passive: false });
+    </script>
+</body>
+</html>
