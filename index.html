@@ -16,10 +16,12 @@
         }
 
         #image {
-            width: 100%; /* Full width on all screens */
-            height: 100%; /* Full height to ensure it scales */
-            object-fit: cover; /* Ensures the image covers the area, cropping if necessary */
-            z-index: 1;
+            width: 100%; /* Full width to fit screen */
+            height: auto; /* Maintain aspect ratio */
+            max-width: 100%; /* Ensure it doesn’t exceed viewport width */
+            max-height: 100%; /* Ensure it doesn’t exceed viewport height */
+            object-fit: contain; /* Fit the image within the bounds without stretching or cropping */
+            z-index: 0; /* Lower z-index so marquees appear above */
         }
 
         .marquee {
@@ -31,6 +33,7 @@
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.5;
+            z-index: 1; /* Higher z-index to ensure marquees are clickable above the image */
         }
 
         .marquee a {
@@ -58,6 +61,17 @@
             .marquee a {
                 margin: 0 20px;
                 padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marquee {
+                font-size: 12px; /* Further reduce for very small screens */
+            }
+
+            .marquee a {
+                margin: 0 15px;
+                padding: 6px;
             }
         }
     </style>
