@@ -2,23 +2,29 @@
 <html>
 <head>
     <title>DIGITAL BAPTISM</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- Mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            overflow: hidden; /* Prevent any scrolling */
             background-color: black;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: fixed; /* Lock the position to prevent any movement */
+            width: 100%; /* Ensure it takes full width */
+            top: 0; /* Lock to top */
+            left: 0; /* Lock to left */
         }
 
         #image {
-            max-width: 90%; /* Allow some breathing room on mobile */
-            max-height: 90%;
-            object-fit: contain; /* Ensures the image scales proportionally */
+            display: block;
+            margin: 0 auto;
+            max-width: 60%;
+            max-height: 60%;
+            object-fit: contain;
         }
 
         .marquee {
@@ -28,16 +34,16 @@
             width: 100%;
             color: white;
             font-family: Arial, sans-serif;
-            font-size: 16px; /* Larger text for better readability on mobile */
-            line-height: 1.5; /* Improve text spacing */
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         .marquee a {
             color: white;
             text-decoration: none;
-            margin: 0 30px; /* Increase margin for larger touch targets */
-            padding: 10px; /* Add padding to make links easier to tap */
-            display: inline-block; /* Ensures padding and margin apply correctly */
+            margin: 0 30px;
+            padding: 10px;
+            display: inline-block;
         }
 
         #marquee1 { top: 10%; animation: scroll-left 15s linear infinite; }
@@ -54,20 +60,26 @@
             100% { transform: translateX(100%); }
         }
 
-        /* Media query for smaller screens */
         @media (max-width: 768px) {
+            #image {
+                max-width: 90%;
+                max-height: 90%;
+            }
+
             .marquee {
-                font-size: 14px; /* Slightly smaller text on very small screens */
+                font-size: 14px;
             }
 
             .marquee a {
-                margin: 0 20px; /* Reduce margin on smaller screens */
+                margin: 0 20px;
                 padding: 8px;
             }
+        }
 
+        @media (min-width: 1200px) {
             #image {
-                max-width: 80%; /* Smaller image on mobile */
-                max-height: 80%;
+                max-width: 50%;
+                max-height: 50%;
             }
         }
     </style>
@@ -90,20 +102,28 @@
     </div>
 
     <script>
+        // Prevent default for all scrolling events
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'ArrowUp' || event.key === 'ArrowDown' || event.key === 'PageUp' || event.key === 'PageDown' || event.key === 'Home' || event.key === 'End') {
+            if (event.key === 'ArrowUp' || event.key === 'ArrowDown' || 
+                event.key === 'ArrowLeft' || event.key === 'ArrowRight' || 
+                event.key === 'PageUp' || event.key === 'PageDown' || 
+                event.key === 'Home' || event.key === 'End' || 
+                event.key === 'Space') {
                 event.preventDefault();
             }
         });
 
         document.addEventListener('wheel', function(event) {
             event.preventDefault();
-        });
+        }, { passive: false });
 
-        // Prevent touchmove scrolling
         document.addEventListener('touchmove', function(event) {
             event.preventDefault();
         }, { passive: false });
+
+        // Ensure no scrolling is possible by setting body position
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
     </script>
 </body>
 </html>
