@@ -2,39 +2,54 @@
 <html>
 <head>
     <title>2K25 TAKEOVER</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- Prevent zooming and ensure correct scaling -->
     <style>
         body {
             margin: 0;
             padding: 20px;
-            height: 100%;
-            background-color: white;
+            min-height: 100vh; /* Ensure full viewport height */
+            background-color: white; /* Optional: can be removed if default white is sufficient */
             color: black;
-            font-family: monospace;
+            font-family: monospace; /* Use monospace for ASCII art alignment */
             font-size: 12px;
             line-height: 1.2;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-            overflow-y: auto;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-y: auto; /* Allow vertical scrolling if content is tall */
         }
 
         .ascii-content {
-            white-space: pre;
-            text-align: center;
-            max-width: 90%;
+            white-space: pre; /* Preserve whitespace and line breaks */
+            text-align: center; /* Center the ASCII art */
+            max-width: 100%; /* Ensure it doesn’t exceed viewport width */
+            word-wrap: break-word; /* Allow text to wrap if too wide (though monospace usually prevents this) */
+            overflow-wrap: break-word; /* Fallback for older browsers */
+            padding: 0 10px; /* Add small padding to prevent edge clipping */
         }
 
+        /* Adjust font size for mobile to ensure fit */
         @media (max-width: 768px) {
             body {
-                font-size: 10px;
+                font-size: 10px; /* Smaller text on mobile */
                 padding: 10px;
             }
 
             .ascii-content {
-                max-width: 95%;
+                max-width: 95%; /* Slightly less than 100% to account for padding */
+            }
+        }
+
+        /* For very small screens, further reduce font size if needed */
+        @media (max-width: 480px) {
+            body {
+                font-size: 8px; /* Even smaller for tiny screens */
+                padding: 5px;
+            }
+
+            .ascii-content {
+                max-width: 90%; /* Tighter fit on very small screens */
             }
         }
     </style>
